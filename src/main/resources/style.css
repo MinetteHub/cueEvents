@@ -1,0 +1,98 @@
+/* Styles pour les commentaires */
+.comment-card {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 3, 0, 0, 1);
+}
+
+.comment-author {
+    -fx-font-weight: bold;
+    -fx-text-fill: #3498db;
+}
+
+.comment-date {
+    -fx-font-size: 11px;
+    -fx-text-fill: #95a5a6;
+}
+
+.comment-content {
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+    -fx-padding: 5 0;
+}
+
+/* Style pour le formulaire */
+.comment-form {
+    -fx-padding: 15;
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+
+/* Style pour le formulaire de commentaire */
+.comment-form {
+    -fx-padding: 15;
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+/* Style pour les boutons */
+.comment-submit-btn {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.comment-cancel-btn {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Style pour le message de confirmation */
+.comment-confirmation {
+    -fx-text-fill: #2ecc71;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+
+.comment-card {
+    -fx-background-color: #f9f9f9;
+    -fx-padding: 10;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 4, 0, 0, 2);
+}
+
+.comment-author {
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.comment-date {
+    -fx-text-fill: #7f8c8d;
+    -fx-font-size: 10px;
+}
+
+.comment-content {
+    -fx-font-size: 14px;
+}
+
+.button {
+    -fx-background-color: #ecf0f1;
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: #bdc3c7;
+}

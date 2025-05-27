@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.PostFormController" spacing="10"
+      style="-fx-background-color: #f8f9fa; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-border-radius: 5; -fx-padding: 20;">
+
+    <Label text="Créer un nouveau post" style="-fx-font-weight: bold;">
+        <font>
+            <Font size="16.0"/>
+        </font>
+    </Label>
+
+    <Label text="Catégorie :">
+        <font>
+            <Font size="13.0"/>
+        </font>
+    </Label>
+    <ComboBox fx:id="categoryComboBox" promptText="Choisir une catégorie">
+        <VBox.margin>
+            <Insets bottom="10.0"/>
+        </VBox.margin>
+    </ComboBox>
+
+    <Label text="Événement associé :">
+        <font>
+            <Font size="13.0"/>
+
+        </font>
+    </Label>
+    <ComboBox fx:id="eventComboBox" promptText="Choisir un événement">
+        <VBox.margin>
+            <Insets bottom="10.0"/>
+        </VBox.margin>
+    </ComboBox>
+
+    <Label text="Titre du post :">
+        <font>
+            <Font size="13.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="titleField" promptText="Titre">
+        <VBox.margin>
+            <Insets bottom="10.0"/>
+        </VBox.margin>
+    </TextField>
+
+    <Label text="Contenu :">
+        <font>
+            <Font size="13.0"/>
+        </font>
+    </Label>
+    <TextArea fx:id="contentField" promptText="Contenu..." prefRowCount="6" wrapText="true"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Annuler" onAction="#handleCancel"
+                style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;">
+            <padding>
+                <Insets left="15.0" right="15.0"/>
+            </padding>
+        </Button>
+        <Button text="Publier" onAction="#handleSubmit"
+                style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;">
+            <padding>
+                <Insets left="15.0" right="15.0"/>
+            </padding>
+        </Button>
+    </HBox>
+</VBox>

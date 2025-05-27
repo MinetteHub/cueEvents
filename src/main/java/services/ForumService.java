@@ -1,56 +1,55 @@
 package services;
 
-import entities.Forum;
+import entities.Post;
+import entities.User;
 import utils.MyDatabase;
 
-import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ForumService {
 
-    private Connection cnx;
+    // Simule une base de données en mémoire
+    private static final List<Post> posts = new ArrayList<>();
+    private static int nextId = 1; // Pour générer les IDs automatiquement
 
-    public ForumService() {
-        cnx = MyDatabase.getInstance().getCnx();
-    }
-
-    public void ajouter(Forum f) throws SQLException {
-        String sql = "INSERT INTO forum(title, content) VALUES('" + f.getTitle() + "', '" + f.getContent() + "')";
-        Statement st = cnx.createStatement();
-        st.executeUpdate(sql);
-    }
-
-    public void modifier(Forum f) throws SQLException {
-        String sql = "UPDATE forum SET title = ?, content = ? WHERE id = ?";
-        PreparedStatement ps = cnx.prepareStatement(sql);
-        ps.setString(1, f.getTitle());
-        ps.setString(2, f.getContent());
-        ps.setInt(3, f.getId());
-        ps.executeUpdate();
-    }
-
-    public void supprimer(Forum f) throws SQLException {
-        String sql = "DELETE FROM forum WHERE id = ?";
-        PreparedStatement ps = cnx.prepareStatement(sql);
-        ps.setInt(1, f.getId());
-        ps.executeUpdate();
-    }
-
-    public List<Forum> recuperer() throws SQLException {
-        List<Forum> forums = new ArrayList<>();
-        String sql = "SELECT * FROM forum";
-        Statement st = cnx.createStatement();
-        ResultSet rs = st.executeQuery(sql);
-
-        while (rs.next()) {
-            int id = rs.getInt("id");
-            String title = rs.getString("title");
-            String content = rs.getString("content");
-            Forum f = new Forum(id, title, content);
-            forums.add(f);
+    // 🔧 Récupère un post par son ID
+    public static Post getPostById(int id) {
+        for (Post post : posts) {
+            if (post.getId() == id) {
+                return post;
+            }
         }
+        return null;
+    }
 
-        return forums;
+    // ✅ Ajout d’un nouveau post
+    public static boolean addPost(String titre, String contenu, int userId, int eventId) {
+        Post post = new Post(eventId, titre, contenu, userId);
+        post.setId(nextId++); // Génère un ID unique
+        posts.add(post);
+        return true;
+    }
+
+    // ✅ Modification d’un post existant
+    public static boolean updatePost(int id, String titre, String contenu) {
+        Post post = getPostById(id);
+        if (post != null) {
+            post.setTitre(titre);     // ✅ Utilise bien setTitre
+            post.setContenu(contenu); // ✅ Utilise bien setContenu
+            return true;
+        }
+        return false;
+    }
+
+    // ✅ Suppression d’un post par ID
+    public static boolean deletePost(int id) {
+        return posts.removeIf(p -> p.getId() == id);
+    }
+
+    // ✅ Liste de tous les posts (à des fins de test ou affichage)
+    public static List<Post> getAllPosts() {
+        return posts;
     }
 }
