@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.ForumController">
+
+   <!-- Sidebar gauche - Profil et navigation -->
+   <left>
+      <VBox prefWidth="220.0" spacing="15" style="-fx-background-color: #34495E;">
+         <padding>
+            <Insets top="20" right="15" bottom="20" left="15"/>
+         </padding>
+
+         <!-- Section Profil -->
+         <VBox alignment="CENTER" spacing="10" style="-fx-background-color: #2C3E50; -fx-background-radius: 10; -fx-padding: 15;">
+            <ImageView fx:id="imgAvatar" fitHeight="80.0" fitWidth="80.0" preserveRatio="true">
+               <image>
+                  <Image url="@/images/avatar_url.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblUsername" text="John_Doe" style="-fx-text-fill: #ECF0F1; -fx-font-size: 18; -fx-font-weight: bold;" />
+            <Label fx:id="lblEmail" text="john@example.com" style="-fx-text-fill: #BDC3C7; -fx-font-size: 12;" />
+            <Separator style="-fx-padding: 5 0 5 0;" />
+            <Button text="Modifier Profil" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-background-radius: 5;" />
+         </VBox>
+
+         <!-- Navigation -->
+         <VBox spacing="8">
+            <Button text="Nouveau Post" style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-background-radius: 5; -fx-font-size: 14;" onAction="#handleNewPost" />
+            <Button text="Mes Posts" style="-fx-background-color: transparent; -fx-text-fill: #ECF0F1; -fx-font-size: 14; -fx-alignment: CENTER_LEFT;" />
+            <Button text="Favoris" style="-fx-background-color: transparent; -fx-text-fill: #ECF0F1; -fx-font-size: 14; -fx-alignment: CENTER_LEFT;" />
+            <Button text="Notifications" style="-fx-background-color: transparent; -fx-text-fill: #ECF0F1; -fx-font-size: 14; -fx-alignment: CENTER_LEFT;" onAction="#handleOpenNotifications" />
+         </VBox>
+
+         <!-- Statistiques rapides -->
+         <VBox spacing="5" style="-fx-background-color: #2C3E50; -fx-background-radius: 10; -fx-padding: 10;">
+            <Label text="STATISTIQUES" style="-fx-text-fill: #7F8C8D; -fx-font-weight: bold; -fx-font-size: 12;" />
+            <HBox spacing="10" alignment="CENTER_LEFT">
+               <Label text="Posts:" style="-fx-text-fill: #ECF0F1;" />
+               <Label fx:id="lblPostCount" text="0" style="-fx-text-fill: #3498DB; -fx-font-weight: bold;" />
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+               <Label text="Commentaires:" style="-fx-text-fill: #ECF0F1;" />
+               <Label fx:id="lblCommentCount" text="0" style="-fx-text-fill: #3498DB; -fx-font-weight: bold;" />
+            </HBox>
+         </VBox>
+
+         <!-- Catégories -->
+         <VBox spacing="5">
+            <Label text="CATÉGORIES" style="-fx-text-fill: #7F8C8D; -fx-font-weight: bold; -fx-font-size: 12;" />
+            <CheckBox fx:id="eventCheckBox" text="Événements" style="-fx-text-fill: #ECF0F1;" />
+            <CheckBox fx:id="questionCheckBox" text="Questions" style="-fx-text-fill: #ECF0F1;" />
+            <CheckBox fx:id="announcementCheckBox" text="Annonces" style="-fx-text-fill: #ECF0F1;" />
+         </VBox>
+      </VBox>
+   </left>
+
+   <!-- Contenu principal -->
+   <center>
+      <VBox spacing="10">
+         <!-- Barre de recherche -->
+         <HBox spacing="10" alignment="CENTER" style="-fx-background-color: #ECF0F1; -fx-padding: 10;">
+            <TextField fx:id="searchField" promptText="Rechercher dans le forum..." style="-fx-background-radius: 5; -fx-border-radius: 5;" prefWidth="300" />
+            <Button fx:id="btnSearch" text="Rechercher" onAction="#handleSearch"
+                    style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-background-radius: 5;" />
+         </HBox>
+
+         <!-- Conteneur des posts -->
+         <ScrollPane fx:id="scrollPosts" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: #FFFFFF;">
+            <content>
+               <VBox fx:id="postContainer" spacing="15" style="-fx-padding: 15;">
+                  <!-- Les PostCard seront injectés ici dynamiquement -->
+               </VBox>
+            </content>
+         </ScrollPane>
+      </VBox>
+   </center>
+</BorderPane>

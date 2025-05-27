@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="formContainer" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.CommentFormController"
+      spacing="10"
+      style="-fx-background-color: #f5f6f7; -fx-background-radius: 8; -fx-border-radius: 8; -fx-padding: 12; -fx-border-color: #dddfe2;">
+
+    <TextArea fx:id="commentTextArea"
+              promptText="Écrivez votre commentaire..."
+              style="-fx-font-size: 14; -fx-background-radius: 4; -fx-border-radius: 4;"
+              prefRowCount="3"
+              wrapText="true"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="btnCancel" text="Annuler" onAction="#handleCancel"
+                style="-fx-background-color: transparent; -fx-text-fill: #65676B; -fx-font-weight: bold; -fx-padding: 6 12 6 12;"/>
+        <Button fx:id="btnSubmit" text="Commenter" onAction="#handleSubmit"
+                style="-fx-background-color: #1b74e4; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 16 6 16;"/>
+    </HBox>
+
+    <Label fx:id="confirmationLabel" text="" visible="false"
+           style="-fx-text-fill: #42b72a; -fx-font-weight: bold; -fx-font-size: 12;"/>
+</VBox>

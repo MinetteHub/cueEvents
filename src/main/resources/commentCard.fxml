@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.CommentCardController"
+      spacing="10"
+      alignment="TOP_LEFT"
+      style="-fx-background-color: #ffffff; -fx-padding: 10; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-radius: 5;">
+
+    <!-- Avatar -->
+    <ImageView fx:id="imgUserAvatar"
+               fitHeight="40"
+               fitWidth="40"
+               style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4,0,0,1);" />
+
+    <!-- Contenu commentaire avec VBox englobant -->
+    <VBox fx:id="commentBox" spacing="4" prefWidth="500">
+
+        <!-- Auteur + date -->
+        <HBox spacing="10">
+            <Label fx:id="authorLabel" text="Nom utilisateur" style="-fx-font-weight: bold;" />
+            <Label fx:id="dateLabel" text="Date" style="-fx-text-fill: #888888; -fx-font-size: 11;" />
+        </HBox>
+
+        <!-- Contenu du commentaire -->
+        <Label fx:id="contentLabel" wrapText="true" text="Contenu du commentaire" />
+
+        <!-- Boutons -->
+        <HBox spacing="10">
+            <Button fx:id="btnLike" text="Like (0)" style="-fx-background-color: transparent; -fx-text-fill: #1b74e4;" onAction="#handleLike"/>
+            <Button fx:id="btnEdit" text="Modifier" style="-fx-background-color: transparent; -fx-text-fill: #1b74e4;" onAction="#handleEdit"/>
+            <Button fx:id="btnReply" text="Répondre" style="-fx-background-color: transparent; -fx-text-fill: #1b74e4;" onAction="#handleReply"/>
+            <Button fx:id="btnDelete" text="Supprimer" style="-fx-background-color: transparent; -fx-text-fill: #e63946;" onAction="#handleDelete"/>
+        </HBox>
+
+    </VBox>
+</HBox>
